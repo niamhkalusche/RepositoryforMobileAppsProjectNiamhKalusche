@@ -1,17 +1,40 @@
 //this component page is the css for the header 
-//logo sizing
+//logo sizing to center it so its slightly further down the toolbar vertically rather than perfectly centered
 .mylogo {
   height: 40px;
+  position: relative;
+  top: 10px;
 }
 
-//ion-title for centering the logo-https://ionicframework.com/docs/api/title
+/* centering the logo with ion title and text align-https://ionicframework.com/docs/api/title,  */
 ion-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  padding: 0;
 }
 
-//making the header the same colour as the background of the logo
+//making the header the same colour as the background of the logo- https://ionicframework.com/docs/api/toolbar
 ion-toolbar {
   --background: #f6eeee;  
+  --min-height: 70px;
+
+  //adjusting the icons at the "start"- the movie icon and the menu (https://ionicframework.com/docs/api/input)
+ion-buttons[slot="start"] {
+  margin-left: 40px;   
+}
+
+//fixing the menu-bringing it to the left 
+.menu-btn {
+  margin-left: -20px;   
+}
+
+//fixing the movie icon- bringing it to the right
+.movie-btn {
+  margin-left: 10px;
+}
+
+//adjusting the icon at the "end"- the search icon (https://ionicframework.com/docs/api/input)
+ion-buttons[slot="end"] {
+  margin-right: 40px;  
+}
+
 }

@@ -1,5 +1,11 @@
+//imports for angular and ionic 
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+
+//importing my specific icons for the header/toolbar
+import { addIcons } from 'ionicons';
+import { filmOutline, searchOutline, menuOutline} from 'ionicons/icons';
+
 
 @Component({
   selector: 'app-header',
@@ -10,7 +16,14 @@ import { IonicModule } from '@ionic/angular';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  //adding the icons to the constructor
+  constructor() { 
+    addIcons({
+    filmOutline,
+    searchOutline,
+    menuOutline
+  });
+  }
 
   ngOnInit() { }
 
