@@ -1,9 +1,17 @@
+//this component page is the css for the header 
+//logo sizing
 .mylogo {
   height: 40px;
 }
 
-mytitle {
+//ion-title for centering the logo-https://ionicframework.com/docs/api/title
+ion-title {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+//making the header the same colour as the background of the logo
+ion-toolbar {
+  --background: #f6eeee;  
 }
