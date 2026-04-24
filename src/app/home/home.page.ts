@@ -33,7 +33,7 @@ export class HomePage {
     console.log("ionViewWillLeave is working")
   }
 
-  //testing ionviewdidleaved
+  //testing ionviewdidleave
   ionViewDidLeave () {
     console.log("ionViewDidLeave is working")
   }
