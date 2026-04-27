@@ -5,12 +5,13 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 import { HeaderComponent } from '../components/header/header.component';
 
 @Component({
-  selector: 'app-my-favourites',
-  templateUrl: './my-favourites.page.html',
+  selector: 'app-searchpage',
+  templateUrl: './searchpage.page.html',
+  styleUrls: ['./searchpage.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent]
 })
-export class MyFavouritesPage implements OnInit {
+export class SearchpagePage implements OnInit {
 
   constructor() { }
 

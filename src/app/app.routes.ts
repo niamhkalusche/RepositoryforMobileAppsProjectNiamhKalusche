@@ -20,4 +20,8 @@ export const routes: Routes = [
     path: 'trending',
     loadComponent: () => import('./trending/trending.page').then( m => m.TrendingPage)
   },
+  {
+    path: 'search',
+    loadComponent: () => import('./searchpage/searchpage.page').then( m => m.SearchpagePage)
+  },
 ];
