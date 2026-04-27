@@ -1,6 +1,7 @@
 <!--- putting menu content into app.component.html as every page will need to use it 
 as shown/explained here (https://www.designerkaran.com/2023/05/part-7-my-first-angular-15-ionic-7-app.html)
-and incoporating this type of menu design where it comes in from the left(https://ionicframework.com/docs/api/menu)-->
+and incoporating this type of menu design where it comes in from the left and putting in toggle so that it closes when a link is opened instead of staying open as shown in link above
+(https://ionicframework.com/docs/api/menu)-->
 <ion-app>
   <ion-menu contentId="main-content">
     <ion-header>
@@ -11,10 +12,18 @@ and incoporating this type of menu design where it comes in from the left(https:
 
     <ion-content>
       <ion-list>
+         <ion-menu-toggle auto-hide="true">
         <ion-item button [routerLink]="['/home']">Home</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="true">
         <ion-item button [routerLink]="['/trending']">Trending</ion-item>
+         </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="true">
         <ion-item button [routerLink]="['/favourites']">Favourites</ion-item>
+         </ion-menu-toggle>
+         <ion-menu-toggle auto-hide="true">
         <ion-item button [routerLink]="['/search']">Search</ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
