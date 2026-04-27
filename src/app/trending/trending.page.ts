@@ -1,3 +1,4 @@
+//importing ionic and angular components and header and footer so they can be used on the trending page
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

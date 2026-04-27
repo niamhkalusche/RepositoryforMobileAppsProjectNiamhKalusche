@@ -1,3 +1,4 @@
+//importing ionic, angular components, oninit and routerlink so i can use routerlink with my icons
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { RouterLink } from '@angular/router';
