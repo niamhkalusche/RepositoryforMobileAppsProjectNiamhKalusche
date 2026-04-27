@@ -1,0 +1,34 @@
+import { Component, OnInit } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { RouterLink } from '@angular/router';
+
+import { addIcons } from 'ionicons';
+import {
+  homeOutline,
+  searchOutline,
+  filmOutline,
+  trendingUpOutline
+} from 'ionicons/icons';
+
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+   imports: [IonicModule, RouterLink],
+  styleUrls: ['./footer.component.scss'],
+})
+
+export class FooterComponent  implements OnInit {
+
+  constructor() {
+     addIcons({
+      homeOutline,
+      searchOutline,
+      filmOutline,
+      trendingUpOutline
+    });
+  }
+   
+  ngOnInit() {}
+
+  }
+
