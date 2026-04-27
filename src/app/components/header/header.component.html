@@ -2,23 +2,23 @@
  to position- https://ionicframework.com/docs/api/input) -->
 <ion-header [translucent]="true">
   <ion-toolbar>
- <ion-buttons slot="start">
-      <!--html for first icon-dropdown -->
-      <ion-button class="mymenubutton">
-        <ion-icon name="menu-outline"></ion-icon>
-      </ion-button>
-    <!--html for the left movie icon/button as well as link to favourites (https://ionicframework.com/docs/angular/navigation?)-->
-      <ion-button [routerLink]="['/favourites']"  class = "mymoviebutton">
+    <ion-buttons slot="start">
+      <!--html for menu -->
+      <ion-button id="menudropdown" class="mymenubutton">
+  <ion-icon name="menu-outline"></ion-icon>
+</ion-button>
+      <!--html for the left movie icon/button as well as link to favourites (https://ionicframework.com/docs/angular/navigation?)-->
+      <ion-button [routerLink]="['/favourites']" class="mymoviebutton">
         <ion-icon name="film-outline"></ion-icon>
       </ion-button>
-      </ion-buttons>
+    </ion-buttons>
 
     <!--html for the logo -->
     <ion-title>
       <img src="assets/pics/Logo.PNG" alt="movie app logo" class="mylogo" />
     </ion-title>
 
-    <!-- html for the right search icon/button -->
+    <!-- html for the right search icon/button and link so that it opens the search page when clicked on -->
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/search']">
         <ion-icon name="search-outline"></ion-icon>
@@ -26,3 +26,13 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-popover trigger="menudropdown" triggerAction="click">
+  <ng-template>
+    <ion-list>
+      <ion-item button [routerLink]="['/home']">Home</ion-item>
+      <ion-item button [routerLink]="['/trending']">Trending</ion-item>
+      <ion-item button [routerLink]="['/favourites']">Favourites</ion-item>
+    </ion-list>
+  </ng-template>
+</ion-popover>
