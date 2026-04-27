@@ -4,11 +4,11 @@
   <ion-toolbar>
  <ion-buttons slot="start">
       <!--html for first icon-dropdown -->
-      <ion-button class="menu-btn">
+      <ion-button class="mymenubutton">
         <ion-icon name="menu-outline"></ion-icon>
       </ion-button>
-    <!--html for the left movie icon/button-->
-      <ion-button class = "movie-btn">
+    <!--html for the left movie icon/button as well as link to favourites (https://ionicframework.com/docs/angular/navigation?)-->
+      <ion-button [routerLink]="['/favourites']"  class = "mymoviebutton">
         <ion-icon name="film-outline"></ion-icon>
       </ion-button>
       </ion-buttons>

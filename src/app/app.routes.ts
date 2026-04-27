@@ -13,7 +13,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'my-favourites',
+    path: 'favourites',
     loadComponent: () => import('./my-favourites/my-favourites.page').then( m => m.MyFavouritesPage)
   },
   {

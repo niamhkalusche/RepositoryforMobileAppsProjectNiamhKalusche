@@ -23,13 +23,13 @@ ion-buttons[slot="start"] {
 }
 
 //fixing the menu-bringing it to the left 
-.menu-btn {
+.mymenubutton {
   margin-left: -20px;   
 }
 
 //fixing the movie icon- bringing it to the right
-.movie-btn {
-  margin-left: 10px;
+.mymoviebutton {
+  margin-left: 20px;
 }
 
 //adjusting the icon at the "end"- the search icon (https://ionicframework.com/docs/api/input)
