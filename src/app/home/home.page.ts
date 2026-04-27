@@ -10,6 +10,6 @@ import { HeaderComponent } from '../components/header/header.component';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor() { }
 
 }

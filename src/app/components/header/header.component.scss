@@ -14,27 +14,27 @@ ion-title {
 
 //making the header the same colour as the background of the logo- https://ionicframework.com/docs/api/toolbar
 ion-toolbar {
-  --background: #f6eeee;  
+  --background: #f6eeee;
   --min-height: 70px;
 
   //adjusting the icons at the "start"- the movie icon and the menu (https://ionicframework.com/docs/api/input)
-ion-buttons[slot="start"] {
-  margin-left: 40px;   
-}
+  ion-buttons[slot="start"] {
+    margin-left: 40px;
+  }
 
-//fixing the menu-bringing it to the left 
-.mymenubutton {
-  margin-left: -20px;   
-}
+  //fixing the menu-bringing it to the left 
+  .mymenubutton {
+    margin-left: -20px;
+  }
 
-//fixing the movie icon- bringing it to the right
-.mymoviebutton {
-  margin-left: 20px;
-}
+  //fixing the movie icon- bringing it to the right
+  .mymoviebutton {
+    margin-left: 20px;
+  }
 
-//adjusting the icon at the "end"- the search icon (https://ionicframework.com/docs/api/input)
-ion-buttons[slot="end"] {
-  margin-right: 40px;  
-}
+  //adjusting the icon at the "end"- the search icon (https://ionicframework.com/docs/api/input)
+  ion-buttons[slot="end"] {
+    margin-right: 40px;
+  }
 
 }

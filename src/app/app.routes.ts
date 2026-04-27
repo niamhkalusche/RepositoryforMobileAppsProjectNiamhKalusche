@@ -14,14 +14,14 @@ export const routes: Routes = [
   },
   {
     path: 'favourites',
-    loadComponent: () => import('./my-favourites/my-favourites.page').then( m => m.MyFavouritesPage)
+    loadComponent: () => import('./my-favourites/my-favourites.page').then(m => m.MyFavouritesPage)
   },
   {
     path: 'trending',
-    loadComponent: () => import('./trending/trending.page').then( m => m.TrendingPage)
+    loadComponent: () => import('./trending/trending.page').then(m => m.TrendingPage)
   },
   {
     path: 'search',
-    loadComponent: () => import('./searchpage/searchpage.page').then( m => m.SearchpagePage)
+    loadComponent: () => import('./searchpage/searchpage.page').then(m => m.SearchpagePage)
   },
 ];
