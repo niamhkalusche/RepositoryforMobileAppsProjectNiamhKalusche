@@ -1,11 +1,16 @@
 <app-header></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Trending</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen] = "true">
+<ion-card *ngFor="let movie of movies">
+    <img
+      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+      alt="movie poster"
+    />
+  <ion-card-header>
+    <ion-card-title>{{ movie.title }}</ion-card-title>
+  </ion-card-header>
+
+</ion-card>
 </ion-content>
 
 <app-footer></app-footer>

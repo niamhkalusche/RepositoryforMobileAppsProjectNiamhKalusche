@@ -2,36 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { HttpOptions } from '@capacitor/core';
 import { MovieService } from '../services/movie';
+import { HeaderComponent } from '../components/header/header.component';
+import { FooterComponent } from '../components/footer/footer.component';
 
 @Component({
   selector: 'app-trending',
-  templateUrl: './trending.page.html',
+  templateUrl: './home.page.html',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, HeaderComponent, FooterComponent ],
 })
-export class TrendingPage implements OnInit {
+export class HomePage implements OnInit {
 
-  movies: any;
-
-  constructor(private ms: MovieService) {}
+constructor() {}
 
  ngOnInit() {
-  this.movies = [];
-  this.getTrendingMovies();
+
 }
 
-  /* my get method for getting the trending movies, telling it where to get them from, what time period (day) and giving it my access token so it
-  can access it */
-  async getTrendingMovies() {
-    const options: HttpOptions = {
-      url: 'https://api.themoviedb.org/3/trending/movie/day',
-      headers: {
-        Authorization: 'Bearer YOUR_TMDB_ACCESS_TOKEN'
-      }
-    };
-
-     const data = await this.ms.get(options);
-     this.movies = data.results;   
-    console.log(this.movies);
-  }
+ 
 }

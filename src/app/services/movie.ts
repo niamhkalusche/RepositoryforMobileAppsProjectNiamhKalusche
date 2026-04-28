@@ -22,7 +22,7 @@ export class MovieService {
     const options: HttpOptions = {
       url: 'https://api.themoviedb.org/3/trending/movie/day',
       headers: {
-        Authorization: 'Bearer YOUR_TMDB_ACCESS_TOKEN'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro'
       }
     };
 
