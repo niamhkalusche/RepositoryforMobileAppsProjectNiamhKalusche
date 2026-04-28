@@ -1,0 +1,19 @@
+//changing display of the header, making it italic, centering it, moving it up a bit and adjusting the font 
+.mysearchheader {
+    font-style: italic;
+    text-align: center;
+    margin: 10px;
+    font-family: Garamond, serif;
+    --padding-start: 15px;
+}
+
+/* changing the size of the search bar and centering it, adjusting padding so that it doesn't force the header up too much.
+resources used:  (https://ionicframework.com/docs/api/searchbar), (https://ionicframework.com/docs/layout/css-utilities) */
+ion-searchbar {
+    width: 70%;
+    margin: 10px auto;
+    display: block;
+    --padding-start: 5px;
+    --padding-end: 10px;
+}
+

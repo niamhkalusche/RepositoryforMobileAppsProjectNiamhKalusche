@@ -1,3 +1,10 @@
 <app-header></app-header>
+<ion-content [fullscreen]="true">
+    <!-- search header with id and class for css styling and animation-->
+    <h1 class="mysearchheader" #searchheader> What are you looking for?</h1>
+    <!-- search bar html learned from (https://ionicframework.com/docs/api/searchbar)-->
+    <ion-searchbar placeholder="Search movies/actors" animated="true" debounce="500" (ionInput)="handleInput($event)">
+    </ion-searchbar>
 
+</ion-content>
 <app-footer></app-footer>

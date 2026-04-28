@@ -46,7 +46,7 @@ export class TrendingPage implements OnInit, AfterViewInit {
      console.log(this.movies);
    }
 
-   /* animation for getting the title to bounce in from the left, learned from (https://ionicframework.com/docs/utilities/animations), (https://www.w3schools.com/cssref/css_pr_translate.php)
+   /* animation for getting the header to bounce in from the left, learned from (https://ionicframework.com/docs/utilities/animations), (https://www.w3schools.com/cssref/css_pr_translate.php)
    and https://www.w3schools.com/cssref/playdemo.php?filename=playcss_translate*/
 
    ngAfterViewInit() {
