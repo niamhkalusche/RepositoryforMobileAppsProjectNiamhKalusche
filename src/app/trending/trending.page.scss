@@ -1,0 +1,14 @@
+.trendingmovies {
+  display: block;
+}
+
+ion-card {
+  width: 70%;
+  margin:10px;         
+}
+
+ion-card img {
+  width: 100%;
+  height: 250px;         
+  object-fit: cover;     
+}

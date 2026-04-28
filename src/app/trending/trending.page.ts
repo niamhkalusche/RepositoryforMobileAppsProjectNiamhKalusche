@@ -11,6 +11,7 @@ import { MovieService } from '../services/movie';
 @Component({
   selector: 'app-trending',
   templateUrl: './trending.page.html',
+  styleUrls: ['./trending.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, HeaderComponent, FooterComponent]
 })
