@@ -7,6 +7,8 @@ import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { HttpOptions } from '@capacitor/core';
 import { MovieService } from '../services/movie';
+import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-trending',
@@ -15,11 +17,14 @@ import { MovieService } from '../services/movie';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, HeaderComponent, FooterComponent]
 })
-export class TrendingPage implements OnInit {
-
+export class TrendingPage implements OnInit, AfterViewInit {
+ @ViewChild('trendingheader', { read: ElementRef }) trendingheader!: ElementRef;
  movies: any;
  
-   constructor(private ms: MovieService) {}
+   constructor(
+    private ms: MovieService,
+    private animationCtrl: AnimationController
+   ) {}
  
   ngOnInit() {
    this.movies = [];
@@ -40,4 +45,18 @@ export class TrendingPage implements OnInit {
       this.movies = data.results;   
      console.log(this.movies);
    }
+
+   /* animation for getting the title to bounce in from the left, learned from (https://ionicframework.com/docs/utilities/animations), (https://www.w3schools.com/cssref/css_pr_translate.php)
+   and https://www.w3schools.com/cssref/playdemo.php?filename=playcss_translate*/
+
+   ngAfterViewInit() {
+  const animation = this.animationCtrl.create()
+    .addElement(this.trendingheader.nativeElement)
+    .duration(1000)
+    .easing('ease-in-out')
+    .fromTo('opacity', '0', '1')
+    .fromTo('transform', 'translateX(-100%)', 'translateX(0)');
+
+  animation.play();
+}
  }
