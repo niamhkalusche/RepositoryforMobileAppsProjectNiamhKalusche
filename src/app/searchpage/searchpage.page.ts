@@ -22,7 +22,8 @@ export class SearchpagePage implements OnInit, AfterViewInit {
   @ViewChild('searchheader', { read: ElementRef }) searchheader!: ElementRef;
 
   //movies array and members array (refers to actors and crew members so users can search for both)
- movies: any[] = [];
+ trendingmovies: any[] = [];
+ searchmovies: any [] = [];
  members: any[] = [];
 
   constructor(
@@ -44,6 +45,7 @@ export class SearchpagePage implements OnInit, AfterViewInit {
       .fromTo('transform', 'translateX(-100%)', 'translateX(0)');
 
     animation.play();
+
   }
 
   //instantiating query element so it can be used outside of handle input-for the actual database search
@@ -80,8 +82,8 @@ export class SearchpagePage implements OnInit, AfterViewInit {
      };
  
       const data = await this.ms.get(options);
-      this.movies = data.results;   
-     console.log(this.movies);
+      this.trendingmovies = data.results;   
+     console.log(this.trendingmovies);
    }
 
   /* get method for getting movies and actors from the database (https://developer.themoviedb.org/reference/search-person), 
@@ -96,7 +98,7 @@ export class SearchpagePage implements OnInit, AfterViewInit {
 
   let result = await this.ms.get(options);
    console.log(result);
-  this.movies = result.results;
+  this.searchmovies = result.results;
 
 }
 async getPeopleFromSearch() {
@@ -110,4 +112,8 @@ async getPeopleFromSearch() {
   let result = await this.ms.get(options);
   this.members = result.results;
 }
+
+
+  
+
 }

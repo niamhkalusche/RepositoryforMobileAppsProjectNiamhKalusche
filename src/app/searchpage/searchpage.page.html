@@ -3,20 +3,55 @@
   <!-- search header with id and class for css styling and animation-->
   <h1 class="mysearchheader" #searchheader> What are you looking for?</h1>
   <!-- search bar html learned from (https://ionicframework.com/docs/api/searchbar)-->
-  <ion-searchbar placeholder="Search" animated="true" debounce="500" (ionInput)="handleInput($event)">
+  <ion-searchbar placeholder="Search" animated="true" (ionChange)="handleInput($event)">
   </ion-searchbar>
   <!--header to explain search bar -->
   <h4 class="searchexplanation">(Search for movies or people (Actors, crew members, directors, writers etc))</h4>
 
-  <ion-card *ngFor="let movie of movies">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="movie poster">
+  <!--trending section-->
+  <!-- wrapping in a div using ngIf so that the whole section (header + cards) only appears 
+     when there is no search and when the trending movies array has elements in it -->
+  <div *ngIf="query == '' && trendingmovies.length > 0">
+
+    <!-- trending header to come up only when theres no search i.e. when theres movies in the trendng movie array- that method has been 
+   called, using ngif to ensure it comes up only under that condition-->
+    <h1 class="mytrendingheader"> What's Trending? </h1>
+
+    <!--card for trending movies with same ng if statement so only appears when trending movies array has elements in it-->
+    <ion-card *ngFor="let movie of trendingmovies">
+
+      <img [src]="movie.poster_path 
+        ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path 
+        : '/assets/pics/noimageavailable.png'">
+
+      <ion-card-header>
+        <ion-card-title>{{ movie.title }}</ion-card-title>
+      </ion-card-header>
+
+    </ion-card>
+
+  </div>
+
+  <ion-card *ngFor="let movie of searchmovies">
+    <!-- ng if to show the actual movie picture if there is one or to display the text there is no image available if not using the ternary operators
+   (https://angular.dev/api/common/NgIf), (https://stackoverflow.com/questions/75805371/ngif-and-classes-in-a-picture-html-element#:~:text=Add%20an%20*ngIf%20directive%20to,directive%20to%20the%20img%20element).
+   (https://stackoverflow.com/questions/51842909/ternary-operator-for-values-in-angular-2-template?) -->
+    <img [src]="movie.poster_path 
+    ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path 
+    : '/assets/pics/noimageavailable.png'">
+
     <ion-card-header>
       <ion-card-title>{{ movie.title }}</ion-card-title>
     </ion-card-header>
+
   </ion-card>
 
+
   <ion-card *ngFor="let member of members">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + member.profile_path">
+    <img [src]="member.profile_path 
+      ? 'https://image.tmdb.org/t/p/w500' + member.profile_path 
+      : '/assets/pics/noimageavailable.png'">
+
     <ion-card-header>
       <ion-card-title>{{ member.name }}</ion-card-title>
       <ion-card-subtitle>{{ member.known_for_department }}</ion-card-subtitle>
