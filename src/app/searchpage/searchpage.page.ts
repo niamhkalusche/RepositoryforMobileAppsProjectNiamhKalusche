@@ -95,7 +95,9 @@ export class SearchpagePage implements OnInit, AfterViewInit {
   };
 
   let result = await this.ms.get(options);
+   console.log(result);
   this.movies = result.results;
+
 }
 async getPeopleFromSearch() {
   let options: HttpOptions = {

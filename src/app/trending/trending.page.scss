@@ -5,13 +5,13 @@
 ion-card {
   width: 50%;
   margin:15px auto;        
-  background: #faebdf; 
+  background: white; 
 }
 
 ion-card img {
   width: 100%;
-  height: 200px;         
-  object-fit: contain;     
+  height: 250px;     
+  object-fit: cover;
 }
 
 .myheader {
