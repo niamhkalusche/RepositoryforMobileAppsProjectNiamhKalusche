@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { FooterComponent } from '../components/footer/footer.component';
 import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
+import { HttpOptions } from '@capacitor/core';
+import { MovieService } from '../services/movie';
 
 @Component({
   selector: 'app-searchpage',
@@ -15,36 +17,47 @@ import { AnimationController } from '@ionic/angular';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, HeaderComponent, FooterComponent]
 })
+
 export class SearchpagePage implements OnInit, AfterViewInit {
-@ViewChild('searchheader', { read: ElementRef }) searchheader!: ElementRef;
+  @ViewChild('searchheader', { read: ElementRef }) searchheader!: ElementRef;
+
+  movies: any[] = [];
 
   constructor(
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private ms: MovieService
   ) { }
 
   ngOnInit() {
   }
 
-     /* animation for getting the header to bounce in from the left, learned from (https://ionicframework.com/docs/utilities/animations), (https://www.w3schools.com/cssref/css_pr_translate.php)
-   and https://www.w3schools.com/cssref/playdemo.php?filename=playcss_translate*/
-   ngAfterViewInit() {
-  const animation = this.animationCtrl.create()
-    .addElement(this.searchheader.nativeElement)
-    .duration(1000)
-    .easing('ease-in-out')
-    .fromTo('opacity', '0', '1')
-    .fromTo('transform', 'translateX(-100%)', 'translateX(0)');
+  ngAfterViewInit() {
+    const animation = this.animationCtrl.create()
+      .addElement(this.searchheader.nativeElement)
+      .duration(1000)
+      .easing('ease-in-out')
+      .fromTo('opacity', '0', '1')
+      .fromTo('transform', 'translateX(-100%)', 'translateX(0)');
 
-  animation.play();
+    animation.play();
+  }
 
-}
+  handleInput(event: Event) {
+    const target = event.target as HTMLIonSearchbarElement;
+    const query = target.value || '';
 
-//method for handling the search
-handleInput(event: Event) {
-  const target = event.target as HTMLIonSearchbarElement;
-  const query = target.value || '';
+    console.log(query);
+  }
 
-  console.log(query);
-}
+  async getMoviesAndActors() {
+    let options: HttpOptions = {
+      url: 'https://api.themoviedb.org/3/search/movie?query=toy story',
+      headers: {
+        Authorization: 'Bearer YOUR_TOKEN_HERE'
+      }
+    };
 
+    let result = await this.ms.get(options);
+    this.movies = result.results;
+  }
 }
