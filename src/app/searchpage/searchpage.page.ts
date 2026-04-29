@@ -54,34 +54,58 @@ export class SearchpagePage implements OnInit, AfterViewInit {
   it can use it */
   handleInput(event: Event) {
     const target = event.target as HTMLIonSearchbarElement;
-    this. query = target.value || '';
+    this.query = target.value || '';
     console.log(this.query);
-    this.getMoviesAndActors();
+
+    //calling the trending movie method if a person doesn't submit anything
+    if (this.query == '' ){
+    this.getTrendingMovies();
+    }
+
+    //calling the search method if a person actually puts something into the search bar
+    else { 
+    this.getMoviesFromSearch();
+    this.getPeopleFromSearch();
+    }
   }
+
+  /* repeating my gettrending movie method so that it can be used 
+  if the user searches nothing */ 
+  async getTrendingMovies() {
+     const options: HttpOptions = {
+       url: 'https://api.themoviedb.org/3/trending/movie/day',
+       headers: {
+         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro'
+       }
+     };
+ 
+      const data = await this.ms.get(options);
+      this.movies = data.results;   
+     console.log(this.movies);
+   }
 
   /* get method for getting movies and actors from the database (https://developer.themoviedb.org/reference/search-person), 
      (https://developer.themoviedb.org/reference/search-movie), (https://developer.themoviedb.org/docs/search-and-query-for-details)*/
-  async getMoviesAndActors() {
-     //movie api call
-  let movieOptions: HttpOptions = {
+  async getMoviesFromSearch() {
+  let options: HttpOptions = {
     url: 'https://api.themoviedb.org/3/search/movie?query=' + this.query,
     headers: {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro',
     }
   };
 
-  let movieResult = await this.ms.get(movieOptions);
-  this.movies = movieResult.results;
-
-  //people api call
-  let peopleOptions: HttpOptions = {
+  let result = await this.ms.get(options);
+  this.movies = result.results;
+}
+async getPeopleFromSearch() {
+  let options: HttpOptions = {
     url: 'https://api.themoviedb.org/3/search/person?query=' + this.query,
     headers: {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro',
     }
   };
 
-  let peopleResult = await this.ms.get(peopleOptions);
-  this.members = peopleResult.results;
-  }
+  let result = await this.ms.get(options);
+  this.members = result.results;
+}
 }
