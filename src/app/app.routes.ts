@@ -24,4 +24,5 @@ export const routes: Routes = [
     path: 'search',
     loadComponent: () => import('./searchpage/searchpage.page').then(m => m.SearchpagePage),
   },
+  
 ];

@@ -1,5 +1,27 @@
 <app-header></app-header>
+ <ion-content [fullscreen]="true">
+ <h1 class="myhomeheader" #homeheader> Welcome to Movie Favourites</h1>
+ <h4 class = "author"> by G00474340</h4>
 
 
+ <!-- div for trending and trending header to appear the first time page is loaded-->
+  <div *ngIf="trendingmovies.length > 0">
+ <!--card for trending movies-->
+ <!-- trending header to come up only when theres no search i.e. when theres movies in the trendng movie array- that method has been 
+   called, using ngif to ensure it comes up only under that condition-->
+    <h1 class="mytrendingheader"> What's Trending? </h1>
+    <ion-card *ngFor="let movie of trendingmovies">
+
+      <img [src]="movie.poster_path 
+        ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path 
+        : '/assets/pics/noimageavailable.png'">
+
+      <ion-card-header>
+        <ion-card-title>{{ movie.title }}</ion-card-title>
+      </ion-card-header>
+
+    </ion-card>
+   </div>
+   </ion-content>
 
 <app-footer></app-footer>
