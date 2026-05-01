@@ -24,5 +24,13 @@ export const routes: Routes = [
     path: 'search',
     loadComponent: () => import('./searchpage/searchpage.page').then(m => m.SearchpagePage),
   },
+  {
+  path: 'moviedetails/:id',
+  loadComponent: () => import('./moviedetails/moviedetails.page').then(m => m.MoviedetailsPage)
+},
+  {
+    path: 'persondetails',
+    loadComponent: () => import('./persondetails/persondetails.page').then( m => m.PersondetailsPage)
+  },
   
 ];

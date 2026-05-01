@@ -32,7 +32,9 @@
 
   </div>
 
-  <ion-card *ngFor="let movie of searchmovies">
+    <!--card for searched movies, with click event that calls the method to open the relevant movie when clicked on 
+    (https://angular.dev/guide/routing/lifecycle-and-events)-->
+  <ion-card *ngFor="let movie of searchmovies" button (click)="openSearchedMovie(movie.id)">
     <!-- ng if to show the actual movie picture if there is one or to display the text there is no image available if not using the ternary operators
    (https://angular.dev/api/common/NgIf), (https://stackoverflow.com/questions/75805371/ngif-and-classes-in-a-picture-html-element#:~:text=Add%20an%20*ngIf%20directive%20to,directive%20to%20the%20img%20element).
    (https://stackoverflow.com/questions/51842909/ternary-operator-for-values-in-angular-2-template?) -->
