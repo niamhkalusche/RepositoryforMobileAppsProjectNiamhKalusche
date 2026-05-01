@@ -1,13 +1,85 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>moviedetails</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">moviedetails</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- ion content and cards (https://ionicframework.com/docs/api/card)-->
+<ion-content [fullscreen]="true" *ngIf="moviedetails">
+  <h1 class ="headers"> {{moviedetails.title}}</h1>
+  <ion-card>
+   <img [src]="moviedetails.poster_path
+        ? 'https://image.tmdb.org/t/p/w500' + moviedetails.poster_path 
+        : '/assets/pics/noimageavailable.png'"> 
+  <ion-card-header>
+       <ion-card-title>
+    <h1> {{moviedetails.title}} ({{moviedetails.release_date}})</h1>
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+  <p> Description: {{moviedetails.overview}}</p>
+   <ion-list>
+
+        <ion-item>
+          <ion-label><p> Genre: {{moviedetails.genres}} </p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <strong>IMDB ID:</strong> {{ moviedetails.imdb_id }}
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <strong>Average Rating:</strong> {{ moviedetails.vote_average }}
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <h1 class="headers"> Cast </h1> 
+  <ion-card>
+  <ion-card-header>
+    <ion-card-title>Cast of {{moviedetails.title}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+        <ion-item *ngFor="let actor of cast">
+           <ion-thumbnail slot="start">
+            <img [src]="actor.profile_path 
+              ? 'https://image.tmdb.org/t/p/w500' + actor.profile_path 
+              : '/assets/pics/noimageavailable.png'">
+          </ion-thumbnail>
+         <ion-label>
+          <h2>{{actor.name}} as {{actor.character}}</h2>
+         </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+
+<h1 class="headers"> Crew </h1> 
+<ion-card>
+  <ion-card-header> 
+    <ion-card-title>Crew of {{moviedetails.title}} </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor = "let person of crew">
+        <ion-thumbnail slot = "start">
+           <img [src]="person.profile_path 
+              ? 'https://image.tmdb.org/t/p/w500' + person.profile_path 
+              : '/assets/pics/noimageavailable.png'">
+        </ion-thumbnail>
+        <ion-label> 
+          <h2>{{person.name}}- {{person.job}}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
 </ion-content>
+  <app-footer></app-footer>
