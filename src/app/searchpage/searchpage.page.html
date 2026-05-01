@@ -49,7 +49,7 @@
   </ion-card>
 
 
-  <ion-card *ngFor="let member of members">
+  <ion-card *ngFor="let member of members" button (click)="openSearchedPerson(member.id)">
     <img [src]="member.profile_path 
       ? 'https://image.tmdb.org/t/p/w500' + member.profile_path 
       : '/assets/pics/noimageavailable.png'">

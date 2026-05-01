@@ -19,6 +19,10 @@ import { FooterComponent } from '../components/footer/footer.component';
 export class persondetailsPage implements OnInit {
 
   persondetails: any;
+  personId: any;
+  personcredits: any;
+  cast: any;
+  crew: any;
 
   constructor(
      private ms: MovieService,
@@ -26,30 +30,30 @@ export class persondetailsPage implements OnInit {
   ) { }
 
   ngOnInit(){ 
-  this.movieId = this.myActivatedRoute.snapshot.paramMap.get('id');
-  this.getSearchedMovieDetails();
-   this.getMovieCredits();
+  this.personId = this.myActivatedRoute.snapshot.paramMap.get('id');
+  this.getCastCrewDetails();
+   this.getCastCrewCredits();
   }
 
-  async getSearchedMovieDetails() {
+  async getCastCrewDetails() {
        const options: HttpOptions = {
-         url: 'https://api.themoviedb.org/3/movie/' + this.movieId,
+           url: 'https://api.themoviedb.org/3/person/' + this.personId,
          headers: {
            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro'
          }
        };
    
         const data = await this.ms.get(options);
-        this.moviedetails = data;  
-       console.log(this.moviedetails);
+        this.persondetails = data;  
+       console.log(this.persondetails);
      }
 
-     async getMovieCredits() {
+     async getCastCrewCredits() {
 
   const options: HttpOptions = {
-    url: 'https://api.themoviedb.org/3/movie/' + this.movieId + '/credits',
-    headers: {
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro'
+ url: 'https://api.themoviedb.org/3/person/' + this.personId + '/movie_credits',
+      headers: {
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro',
     }
   };
 

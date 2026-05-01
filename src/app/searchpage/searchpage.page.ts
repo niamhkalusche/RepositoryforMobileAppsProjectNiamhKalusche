@@ -118,10 +118,13 @@ async getPeopleFromSearch() {
 /* method for opening the movie that was searched in the search bar, using router navigate method (https://angular.dev/guide/routing/navigate-to-routes)
 https://gondi-sai.medium.com/route-parameters-in-angular-dynamic-routing-explained-angular-no-11-853804e4960c*/
 openSearchedMovie(id: number){
-    console.log("Clicked movie ID:", id);
+  console.log("Clicked movie ID:", id);
    this.myrouter.navigate(['/moviedetails', id]);
 }
 
-  
+openSearchedPerson (id: number) {
+  console.log("Clicked person ID", id);
+  this.myrouter.navigate(['/persondetails', id])
+}
 
 }
