@@ -9,6 +9,7 @@ import { HttpOptions } from '@capacitor/core';
 import { MovieService } from '../services/movie';
 import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trending',
@@ -23,7 +24,8 @@ export class TrendingPage implements OnInit, AfterViewInit {
  
    constructor(
     private ms: MovieService,
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private myrouter: Router
    ) {}
  
   ngOnInit() {
@@ -59,4 +61,10 @@ export class TrendingPage implements OnInit, AfterViewInit {
 
   animation.play();
 }
+
+openSearchedMovie(id: number){
+  console.log("Clicked movie ID:", id);
+   this.myrouter.navigate(['/moviedetails', id]);
+}
+
  }

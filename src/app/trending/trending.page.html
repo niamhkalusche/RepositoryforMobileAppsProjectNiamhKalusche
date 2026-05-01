@@ -5,7 +5,7 @@
 
   <h1 class ="myheader" #trendingheader> What's Trending?</h1>
   <div class = "trendingmovies">
-<ion-card *ngFor="let movie of movies">
+<ion-card *ngFor="let movie of movies" button (click)="openSearchedMovie(movie.id)">
     <img
       [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
       alt="movie poster"

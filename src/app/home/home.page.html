@@ -10,7 +10,7 @@
  <!-- trending header to come up only when theres no search i.e. when theres movies in the trendng movie array- that method has been 
    called, using ngif to ensure it comes up only under that condition-->
     <h1 class="mytrendingheader"> What's Trending? </h1>
-    <ion-card *ngFor="let movie of trendingmovies">
+    <ion-card *ngFor="let movie of trendingmovies" button (click)="openSearchedMovie(movie.id)">
 
       <img [src]="movie.poster_path 
         ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path 

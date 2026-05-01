@@ -7,6 +7,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,6 +25,7 @@ trendingmovies: any[] = [];
 constructor(
   private animationCtrl: AnimationController,
   private ms: MovieService,
+  private myrouter: Router
 ) {
 }
 
@@ -55,4 +57,9 @@ ngAfterViewInit() {
       this.trendingmovies = data.results;   
      console.log(this.trendingmovies);
    }
+
+   openSearchedMovie(id: number){
+  console.log("Clicked movie ID:", id);
+   this.myrouter.navigate(['/moviedetails', id]);
+}
 }

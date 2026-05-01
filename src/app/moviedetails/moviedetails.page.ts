@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MovieService } from '../services/movie';
 import { HttpOptions } from '@capacitor/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
-import { IonicStorageModule} from '@ionic/storage-angular';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -25,7 +24,8 @@ crew: any = [];
 
   constructor(
      private ms: MovieService,
-     private myActivatedRoute: ActivatedRoute
+     private myActivatedRoute: ActivatedRoute,
+     private myrouter: Router
   ) { }
 
   ngOnInit(){ 
@@ -64,5 +64,11 @@ crew: any = [];
   console.log(this.cast);
   console.log(this.crew);
 }
+
+openSearchedPerson (id: number) {
+  console.log("Clicked person ID", id);
+  this.myrouter.navigate(['/persondetails', id])
+}
+
   }
 

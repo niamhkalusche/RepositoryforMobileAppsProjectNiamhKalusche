@@ -47,7 +47,7 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-        <ion-item *ngFor="let actor of cast">
+        <ion-item *ngFor="let actor of cast" button (click)="openSearchedPerson(actor.id)">
            <ion-thumbnail slot="start">
             <img [src]="actor.profile_path 
               ? 'https://image.tmdb.org/t/p/w500' + actor.profile_path 
@@ -68,7 +68,7 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-item *ngFor = "let person of crew">
+      <ion-item *ngFor = "let person of crew" button (click)="openSearchedPerson(person.id)">
         <ion-thumbnail slot = "start">
            <img [src]="person.profile_path 
               ? 'https://image.tmdb.org/t/p/w500' + person.profile_path 

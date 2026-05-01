@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MovieService } from '../services/movie';
 import { HttpOptions } from '@capacitor/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 
@@ -25,7 +25,8 @@ export class persondetailsPage implements OnInit {
 
   constructor(
      private ms: MovieService,
-     private myActivatedRoute: ActivatedRoute
+     private myActivatedRoute: ActivatedRoute,
+     private myrouter: Router
   ) { }
 
   ngOnInit(){ 
@@ -76,6 +77,11 @@ async getPersonTVCredits() {
   const data = await this.ms.get(options);
 this.persontvcredits = data.cast;
 console.log(this.persontvcredits);
+}
+
+openSearchedMovie(id: number){
+  console.log("Clicked movie ID:", id);
+   this.myrouter.navigate(['/moviedetails', id]);
 }
   }
 

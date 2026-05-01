@@ -67,7 +67,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let credit of personmoviecredits">
+        <ion-item *ngFor="let credit of personmoviecredits"   button (click)="openSearchedMovie(credit.id)">
             <ion-thumbnail slot="start">
           <img [src]="credit.poster_path 
             ? 'https://image.tmdb.org/t/p/w500' + credit.poster_path 
@@ -89,7 +89,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-       <ion-item *ngFor="let credit of persontvcredits">
+       <ion-item *ngFor="let credit of persontvcredits"   >
 
         <ion-thumbnail slot="start">
           <img [src]="credit.poster_path 
