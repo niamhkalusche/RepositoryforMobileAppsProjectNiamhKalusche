@@ -20,9 +20,8 @@ export class persondetailsPage implements OnInit {
 
   persondetails: any;
   personId: any;
-  personcredits: any;
-  cast: any;
-  crew: any;
+  personmoviecredits: any;
+  persontvcredits: any;
 
   constructor(
      private ms: MovieService,
@@ -32,7 +31,8 @@ export class persondetailsPage implements OnInit {
   ngOnInit(){ 
   this.personId = this.myActivatedRoute.snapshot.paramMap.get('id');
   this.getCastCrewDetails();
-   this.getCastCrewCredits();
+   this.getPersonMovieCredits();
+   this.getPersonTVCredits();
   }
 
   async getCastCrewDetails() {
@@ -48,10 +48,10 @@ export class persondetailsPage implements OnInit {
        console.log(this.persondetails);
      }
 
-     async getCastCrewCredits() {
+     async getPersonMovieCredits() {
 
   const options: HttpOptions = {
- url: 'https://api.themoviedb.org/3/person/' + this.personId + '/movie_credits',
+   url: 'https://api.themoviedb.org/3/person/' + this.personId + '/movie_credits',
       headers: {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro',
     }
@@ -59,11 +59,23 @@ export class persondetailsPage implements OnInit {
 
   const data = await this.ms.get(options);
 
-  this.cast = data.cast;
-  this.crew = data.crew;
+ this.personmoviecredits = data.cast;
+console.log(this.personmoviecredits);
 
-  console.log(this.cast);
-  console.log(this.crew);
+}
+
+async getPersonTVCredits() {
+
+  const options: HttpOptions = {
+      url: 'https://api.themoviedb.org/3/person/' + this.personId + '/tv_credits',
+      headers: {
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmU3MzQwZTUzZDcxOWY3ZTBmNWZmNmIyMmViYmI2NiIsIm5iZiI6MTc3NzI5OTI2NC43MjYsInN1YiI6IjY5ZWY2ZjQwMDlkZWE4NDY1ZGQ0OTcxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rmkBBt4VijAoQ-PXGUdr5FmRiuNswtSIK8XTcETi2Ro',
+    }
+  };
+
+  const data = await this.ms.get(options);
+this.persontvcredits = data.cast;
+console.log(this.persontvcredits);
 }
   }
 
