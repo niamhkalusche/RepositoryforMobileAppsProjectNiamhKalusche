@@ -13,9 +13,10 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'favourites',
-    loadComponent: () => import('./my-favourites/my-favourites.page').then(m => m.MyFavouritesPage),
-  },
+  path: 'favourites',
+  loadComponent: () =>
+    import('./my-favourites/my-favourites.page').then(m => m.MyFavouritesPage)
+},
   {
     path: 'trending',
     loadComponent: () => import('./trending/trending.page').then(m => m.TrendingPage),

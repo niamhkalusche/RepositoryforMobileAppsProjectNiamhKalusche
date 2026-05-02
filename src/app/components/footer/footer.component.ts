@@ -7,7 +7,7 @@ import { addIcons } from 'ionicons';
 import {
   homeOutline,
   searchOutline,
-  filmOutline,
+  heartOutline,
   trendingUpOutline
 } from 'ionicons/icons';
 
@@ -24,7 +24,7 @@ export class FooterComponent  implements OnInit {
      addIcons({
       homeOutline,
       searchOutline,
-      filmOutline,
+      heartOutline,
       trendingUpOutline
     });
   }

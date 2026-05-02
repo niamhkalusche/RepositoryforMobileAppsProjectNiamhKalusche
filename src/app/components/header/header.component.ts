@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 //importing my specific icons for the header/toolbar
 import { addIcons } from 'ionicons';
-import { filmOutline, searchOutline, menuOutline } from 'ionicons/icons';
+import { heartOutline, searchOutline, menuOutline } from 'ionicons/icons';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   //adding the icons to the constructor
   constructor() {
     addIcons({
-      filmOutline,
+      heartOutline,
       searchOutline,
       menuOutline
     });
