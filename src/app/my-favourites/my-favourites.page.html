@@ -2,48 +2,33 @@
 
 <ion-content [fullscreen]="true">
     <h1 class="favouritesheader"> Your Favourites</h1>
-    <ion-card *ngFor="let movie of favourites">
-        <div class="movieposterrow">
-            <img class="movie-poster" [src]="movie.poster_path
-    ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path 
-    : '/assets/pics/noimageavailable.png'">
+   <div class="favouritemovieanddeleteicon" *ngFor="let movie of favourites">
 
-            <ion-icon class="deletefromfavouritesbutton" name="trash-outline" (click)="deleteFromFavourites(movie)">
-            </ion-icon>
-        </div>
-        <ion-card-header>
-            <ion-card-title>
-                <h1> {{movie.title}} ({{movie.release_date}})</h1>
-            </ion-card-title>
-        </ion-card-header>
+  <ion-card button (click)="openMovie(movie.id)">
+    <div class="movieposterrow">
+      <img class="movie-poster" [src]="movie.poster_path
+        ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path 
+        : '/assets/pics/noimageavailable.png'">
+    </div>
 
-        <ion-card-content>
-            <p> Description: {{movie.overview}}</p>
-            <ion-list>
+    <ion-card-header>
+      <ion-card-title>
+        <h1>{{movie.title}} ({{movie.release_date}})</h1>
+      </ion-card-title>
+    </ion-card-header>
 
-                <ion-item>
-                    <ion-label>
-                        <p> Genre: {{movie.genres}} </p>
-                    </ion-label>
-                </ion-item>
+    <ion-card-content>
+      <p>Description: {{movie.overview}}</p>
+    </ion-card-content>
+  </ion-card>
 
-                <ion-item>
-                    <ion-label>
-                        <strong>IMDB ID:</strong> {{ movie.imdb_id }}
-                    </ion-label>
-                </ion-item>
+  <ion-icon 
+    class="deletefromfavouritesbutton" 
+    name="trash-outline" 
+    (click)="deleteFromFavourites(movie)">
+  </ion-icon>
 
-                <ion-item>
-                    <ion-label>
-                        <strong>Average Rating:</strong> {{ movie.vote_average }}
-                    </ion-label>
-                </ion-item>
-
-            </ion-list>
-
-        </ion-card-content>
-
-    </ion-card>
+</div>
 </ion-content>
 
 <app-footer></app-footer>

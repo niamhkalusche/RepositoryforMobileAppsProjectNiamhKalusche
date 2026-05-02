@@ -8,6 +8,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { MyData } from '../services/my-data';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-favourites',
@@ -20,7 +21,10 @@ export class MyFavouritesPage implements OnInit {
 
   favourites: any;
 
-  constructor(private mds: MyData) { 
+  constructor(
+    private mds: MyData,
+    private myrouter: Router
+  ) { 
     addIcons({
        trashOutline
     });
@@ -46,5 +50,13 @@ export class MyFavouritesPage implements OnInit {
       this.favourites = result;
     }
   }
+
+  openMovie(id: number) {
+  this.myrouter.navigate(['/moviedetails', id]);
+}
+
+   refreshFavouritesPage () {
+    this.myrouter.navigate(['/favourites']);
+   }
 }
 
