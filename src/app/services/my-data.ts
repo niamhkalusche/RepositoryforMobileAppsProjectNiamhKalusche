@@ -1,3 +1,5 @@
+//service for ionic storage, using same method as gerard from ionic storage demo
+
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 

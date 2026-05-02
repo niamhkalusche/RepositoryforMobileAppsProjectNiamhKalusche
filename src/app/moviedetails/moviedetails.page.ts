@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { IonicModule } from '@ionic/angular';
+import { MyData } from '../services/my-data';
+import { addIcons } from 'ionicons';
+import { heartOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-moviedetails',
@@ -22,16 +25,22 @@ export class MoviedetailsPage implements OnInit {
  cast: any = [];
 crew: any = [];
 
-  constructor(
-     private ms: MovieService,
-     private myActivatedRoute: ActivatedRoute,
-     private myrouter: Router
-  ) { }
+ constructor(
+  private ms: MovieService,
+  private myActivatedRoute: ActivatedRoute,
+  private myrouter: Router,
+  private mds: MyData
+) {
+  addIcons({
+    heartOutline
+  });
+}
 
   ngOnInit(){ 
   this.movieId = this.myActivatedRoute.snapshot.paramMap.get('id');
   this.getSearchedMovieDetails();
    this.getMovieCredits();
+   this.mds.set("john", "name");
   }
 
   async getSearchedMovieDetails() {

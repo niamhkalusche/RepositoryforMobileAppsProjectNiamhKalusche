@@ -25,7 +25,7 @@ trendingmovies: any[] = [];
 constructor(
   private animationCtrl: AnimationController,
   private ms: MovieService,
-  private myrouter: Router
+  private myrouter: Router,
 ) {
 }
 
