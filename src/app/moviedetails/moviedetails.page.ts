@@ -24,6 +24,9 @@ export class MoviedetailsPage implements OnInit {
   movieId: any;
  cast: any = [];
 crew: any = [];
+favouriteMovie: any;
+
+
 
  constructor(
   private ms: MovieService,
@@ -40,7 +43,6 @@ crew: any = [];
   this.movieId = this.myActivatedRoute.snapshot.paramMap.get('id');
   this.getSearchedMovieDetails();
    this.getMovieCredits();
-   this.mds.set("john", "name");
   }
 
   async getSearchedMovieDetails() {
@@ -78,6 +80,23 @@ openSearchedPerson (id: number) {
   console.log("Clicked person ID", id);
   this.myrouter.navigate(['/persondetails', id])
 }
+
+//adding to favourites method using gerard's method as well as this method for when its multiple items thus an array- (https://ionicacademy.com/storing-data-inside-ionic-apps/)
+async AddToFavourites () {
+   let result = await this.mds.get("favourites");
+
+  if (result) {
+    result.push(this.moviedetails);
+    return this.mds.set("favourites", result);
+  } else {
+    return this.mds.set("favourites", [this.moviedetails]);
+  }
+}
+
+async ionViewWillEnter () {
+  this.favouriteMovie = await this.mds.get("favourite");
+}
+
 
   }
 

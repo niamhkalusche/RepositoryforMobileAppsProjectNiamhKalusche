@@ -9,7 +9,8 @@
     ? 'https://image.tmdb.org/t/p/w500' + moviedetails.poster_path 
     : '/assets/pics/noimageavailable.png'">
 
-      <ion-icon class="favouriteheartbutton" name="heart-outline"></ion-icon>
+      <ion-icon class="favouriteheartbutton" name="heart-outline" (click)="AddToFavourites()">
+      </ion-icon>
     </div>
     <ion-card-header>
       <ion-card-title>
@@ -90,5 +91,6 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+
 </ion-content>
 <app-footer></app-footer>
