@@ -18,7 +18,7 @@
     <h1 class="mytrendingheader"> What's Trending? </h1>
 
     <!--card for trending movies with same ng if statement so only appears when trending movies array has elements in it-->
-    <ion-card *ngFor="let movie of trendingmovies">
+    <ion-card *ngFor="let movie of trendingmovies" button (click)="openSearchedMovie(movie.id)">
 
       <img [src]="movie.poster_path 
         ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path 
@@ -48,7 +48,7 @@
 
   </ion-card>
 
-
+  <!--card for searched person so you can view an actor/crew/cast member-->
   <ion-card *ngFor="let member of members" button (click)="openSearchedPerson(member.id)">
     <img [src]="member.profile_path 
       ? 'https://image.tmdb.org/t/p/w500' + member.profile_path 
