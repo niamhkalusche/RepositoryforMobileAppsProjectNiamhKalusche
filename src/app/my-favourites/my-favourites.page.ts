@@ -6,18 +6,25 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { MyData } from '../services/my-data';
+import { addIcons } from 'ionicons';
+import { trashOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-my-favourites',
   templateUrl: './my-favourites.page.html',
   standalone: true,
+  styleUrls: ['./my-favourites.scss'],
   imports: [IonicModule, CommonModule, FormsModule, HeaderComponent, FooterComponent]
 })
 export class MyFavouritesPage implements OnInit {
 
   favourites: any;
 
-  constructor(private mds: MyData) { }
+  constructor(private mds: MyData) { 
+    addIcons({
+       trashOutline
+    });
+  }
 
   ngOnInit() {
   }
@@ -26,7 +33,7 @@ export class MyFavouritesPage implements OnInit {
     this.favourites = await this.mds.get("favourites");
   }
 
-//method for deleting items from an array-using this method (https://ionicacademy.com/storing-data-inside-ionic-apps/)
+  //method for deleting items from an array-using this method (https://ionicacademy.com/storing-data-inside-ionic-apps/)
   async deleteFromFavourites(movie: any) {
     let result = await this.mds.get("favourites");
 
