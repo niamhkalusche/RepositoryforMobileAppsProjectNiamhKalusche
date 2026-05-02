@@ -9,7 +9,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { IonicModule } from '@ionic/angular';
 import { MyData } from '../services/my-data';
 import { addIcons } from 'ionicons';
-import { heartOutline } from 'ionicons/icons';
+import { heartOutline, trashOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-moviedetails',
@@ -25,6 +25,7 @@ export class MoviedetailsPage implements OnInit {
   cast: any = [];
   crew: any = [];
   favouriteMovie: any;
+  favourites: any;
 
 
 
@@ -35,7 +36,8 @@ export class MoviedetailsPage implements OnInit {
     private mds: MyData
   ) {
     addIcons({
-      heartOutline
+      heartOutline,
+      trashOutline
     });
   }
 
@@ -101,5 +103,17 @@ export class MoviedetailsPage implements OnInit {
   }
 
 
+  async deleteFromFavourites(movie: any) {
+    let result = await this.mds.get("favourites");
+
+    if (result) {
+      var index = result.findIndex((m: any) => m.id == movie.id);
+
+      result.splice(index, 1);
+
+      await this.mds.set("favourites", result);
+      this.favourites = result;
+    }
+  }
 }
 
